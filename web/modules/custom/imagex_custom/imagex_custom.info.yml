@@ -1,0 +1,5 @@
+name: 'imagex_custom'
+type: module
+description: 'ImageX Custom module.'
+core: 8.x
+package: 'ImageX'
