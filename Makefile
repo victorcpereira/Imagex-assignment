@@ -85,7 +85,6 @@ install: ##@dev-environment Configure development environment.
 	if [ ! -f .env ]; then cp .env.dist .env; fi
 	make down
 	make up
-	if [ ! -f web/sites/example.settings.local.php ]; then cp web/sites/example.settings.local.php web/sites/default/settings.local.php; fi
 	make composer-install
 	@echo "Development environment for $(PROJECT_NAME) is ready."
 	make site-install
