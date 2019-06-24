@@ -88,10 +88,12 @@ install: ##@dev-environment Configure development environment.
 	make composer-install
 	@echo "Development environment for $(PROJECT_NAME) is ready."
 	make site-install
+	make prep-site
+	make cim
 	make uli
 
 site-install:
-	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) si -y
+	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) si --db-url=mysql://imagex:imagex@mariadb:3306/imagex -y
 
 composer-update: ##@dev-environment Run composer update.
 	docker-compose exec -T php composer update -n --prefer-dist -vvv
@@ -99,9 +101,9 @@ composer-update: ##@dev-environment Run composer update.
 composer-install: ##@dev-environment Run composer install
 	docker-compose exec -T php composer install -n --prefer-dist -vvv
 
-fetch-db: ##@dev-environment Download `database.sql`.
-	if [ -f build/db/database.sql ]; then rm build/db/database.sql; fi
-	if [ ! -f build/db/database.sql ]; then terminus backup:get ru-health.live --element=database --to=build/db/database.sql.gz; gunzip build/db/database.sql.gz -f; fi
+prep-site: ##@dev-environment Prepare site for local dev.
+	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) --uri='$(PROJECT_BASE_URL)' config-set "system.site" uuid "6f6900f3-e10d-4138-a762-58efd715af7f" -y
+	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) --uri='$(PROJECT_BASE_URL)' ev '\Drupal::entityManager()->getStorage("shortcut_set")->load("default")->delete();'
 
 #
 # Drush
@@ -120,6 +122,9 @@ updb: ##drush run database updates.
 
 entup: ##drush run database updates.
 	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) entup -v
+
+cr: ##drush run cache clear.
+	docker exec $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") drush -r $(DRUPAL_ROOT) cr
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
