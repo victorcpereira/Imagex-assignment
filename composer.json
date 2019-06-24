@@ -22,6 +22,7 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.7.0",
+        "drupal/restui": "^1.17",
         "drush/drush": "^9.0.0",
         "league/csv": "^9.2",
         "vlucas/phpdotenv": "^2.4",
