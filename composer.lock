@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3c42c51253ba3bc56b77bf433a3ddb5",
+    "content-hash": "9da8d98838356a96bf8bf98e5de9a2f3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3295,6 +3295,73 @@
                 "service"
             ],
             "time": "2017-05-10T09:20:27+00:00"
+        },
+        {
+            "name": "league/csv",
+            "version": "9.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "b574a7d8b28f1528e011d8652fb7d2e83410d4c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/b574a7d8b28f1528e011d8652fb7d2e83410d4c9",
+                "reference": "b574a7d8b28f1528e011d8652fb7d2e83410d4c9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.0.10"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "friendsofphp/php-cs-fixer": "^2.12",
+                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan-phpunit": "^0.9.4",
+                "phpstan/phpstan-strict-rules": "^0.9.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "suggest": {
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Csv data manipulation made easy in PHP",
+            "homepage": "http://csv.thephpleague.com",
+            "keywords": [
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "write"
+            ],
+            "time": "2019-06-07T06:24:33+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -8427,17 +8494,6 @@
         {
             "name": "webflo/drupal-core-require-dev",
             "version": "8.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webflo/drupal-core-require-dev.git",
-                "reference": "75d11db587237934914a1cd150e81462665a19aa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/75d11db587237934914a1cd150e81462665a19aa",
-                "reference": "75d11db587237934914a1cd150e81462665a19aa",
-                "shasum": ""
-            },
             "require": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "^1.2",
