@@ -1,0 +1,18 @@
+imagex_custom.customers_list_controller_page:
+  path: '/image-custom/customers'
+  defaults:
+    _controller: '\Drupal\imagex_custom\Controller\CustomersListController::page'
+  requirements:
+    _permission: 'access content'
+
+imagex_custom.customers_list_controller_page_filter:
+  path: '/image-custom/customers/{customer}'
+  defaults:
+    _controller: '\Drupal\imagex_custom\Controller\CustomersListController::page'
+  options:
+      parameters:
+        customer:
+          type: entity:customer
+  requirements:
+    _permission: 'access content'
+
