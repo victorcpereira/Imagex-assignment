@@ -1,0 +1,21 @@
+uuid: 90cf599d-8fc9-4e48-8e83-d4c4215ffadf
+langcode: en
+status: true
+dependencies:
+  module:
+    - imagex_custom
+    - serialization
+    - user
+id: entity.customer
+plugin_id: 'entity:customer'
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - DELETE
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie
